@@ -1,0 +1,254 @@
+ {% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid dark-theme py-5 min-vh-100">
+    <!-- Animated Background -->
+    <div class="position-fixed top-0 start-0 w-100 h-100" style="
+        background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+        z-index: -1;
+        opacity: 0.9;
+    "></div>
+    <!-- Hero Section -->
+    <div class="row justify-content-center py-5 animate__animated animate__fadeInDown">
+        <div class="col-md-8 text-center">
+            <h1 class="mb-4">Python Knowledge Quiz</h1>
+            <p class="lead">Test your Python programming skills with our interactive quiz!</p>
+            <a href="{% url 'quiz:start_quiz' %}" class="btn btn-primary btn-lg mt-3">
+                Start Quiz <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="row py-5 bg-light rounded-3 my-4">
+        <div class="col-md-10 mx-auto">
+            <h2 class="text-center mb-4"><i class="fas fa-star text-warning me-2"></i>Features</h2>
+            <div class="row text-center">
+                <div class="col-md-4 mb-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                    <div class="card h-100 border-0 shadow-sm animate__animated animate__fadeIn" 
+                         id="timed-card"
+                         onmouseenter="this.classList.replace('animate__fadeIn', 'animate__heartBeat')"
+                         onmouseleave="this.classList.replace('animate__heartBeat', 'animate__fadeIn')">
+                        <div class="card-body">
+                            <i class="fas fa-clock fa-3x text-primary mb-3"></i>
+                            <h5>Timed Questions</h5>
+                            <p class="mb-2">30 seconds per question</p>
+                            <div class="progress mb-3">
+                                <div class="progress-bar bg-primary" style="width: 100%">30s</div>
+                            </div>
+                            <p>Test your quick thinking under pressure</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 fade-in" style="animation-delay: 0.4s">
+                    <div class="card h-100 border-0 shadow-sm animate__animated animate__flipInY" id="difficulty-card"
+                         onmouseenter="this.classList.replace('animate__flipInY', 'animate__rubberBand')"
+                         onmouseleave="this.classList.replace('animate__rubberBand', 'animate__flipInY')">
+                        <div class="card-body">
+                            <i class="fas fa-signal fa-3x text-success mb-3"></i>
+                            <h5>Difficulty Levels</h5>
+                            <div class="d-flex justify-content-center gap-2 mb-3">
+                                <span class="badge bg-success">Easy</span>
+                                <span class="badge bg-warning">Medium</span>
+                                <span class="badge bg-danger">Hard</span>
+                            </div>
+                            <p>Questions tailored to your skill level</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 fade-in" style="animation-delay: 0.6s">
+                    <div class="card h-100 border-0 shadow-sm animate__animated animate__zoomIn" id="learn-card"
+                         onmouseenter="this.classList.replace('animate__zoomIn', 'animate__swing')"
+                         onmouseleave="this.classList.replace('animate__swing', 'animate__zoomIn')">
+                        <div class="card-body">
+                            <i class="fas fa-graduation-cap fa-3x text-info mb-3"></i>
+                            <h5>Learn Python</h5>
+                            <p>Improve your skills with GeeksforGeeks</p>
+                            <a href="https://www.geeksforgeeks.org/python-programming-language/" 
+                               target="_blank" 
+                               class="btn btn-sm btn-outline-info mt-2">
+                                Visit GeeksforGeeks
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact" class="row py-5 my-4 fade-in" style="animation-delay: 0.8s">
+        <div class="col-md-10 mx-auto text-center">
+            <h2><i class="fas fa-envelope text-primary me-2"></i>Contact Us</h2>
+            <p class="lead mb-4">Get in touch through any of these channels:</p>
+            
+            <div class="row justify-content-center g-4">
+                <!-- Email -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm animate__animated animate__bounce"
+                         onmouseenter="this.classList.replace('animate__bounce', 'animate__rubberBand')"
+                         onmouseleave="this.classList.replace('animate__rubberBand', 'animate__bounce')">
+                        <div class="card-body">
+                            <i class="fas fa-envelope fa-2x text-danger mb-3"></i>
+                            <h5>Email</h5>
+                            <p>rajendramohan7800@gmail.com</p>
+                            <a href="mailto:rajendramohan7800@gmail.com" class="btn btn-sm btn-outline-danger">
+                                <i class="fas fa-paper-plane me-1"></i> Send Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WhatsApp -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm animate__animated animate__flash"
+                         onmouseenter="this.classList.replace('animate__flash', 'animate__shakeX')"
+                         onmouseleave="this.classList.replace('animate__shakeX', 'animate__flash')">
+                        <div class="card-body">
+                            <i class="fab fa-whatsapp fa-2x text-success mb-3"></i>
+                            <h5>WhatsApp</h5>
+                            <p>+91 7348619567</p>
+                            <a href="https://wa.me/911234567890" class="btn btn-sm btn-outline-success">
+                                <i class="fab fa-whatsapp me-1"></i> Message
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LinkedIn -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm animate__animated animate__flipInX"
+                         onmouseenter="this.classList.replace('animate__flipInX', 'animate__jello')"
+                         onmouseleave="this.classList.replace('animate__jello', 'animate__flipInX')">
+                        <div class="card-body">
+                            <i class="fab fa-linkedin fa-2x text-primary mb-3"></i>
+                            <h5>LinkedIn</h5>
+                            <p>Rajender Mohan Verma</p>
+                            <a href="https://www.linkedin.com/in/rajender-mohan-verma-10418432a/" class="btn btn-sm btn-outline-primary">
+                                <i class="fab fa-linkedin me-1"></i> Connect
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- X (Twitter) -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm animate__animated animate__slideInUp"
+                         onmouseenter="this.classList.replace('animate__slideInUp', 'animate__wobble')"
+                         onmouseleave="this.classList.replace('animate__wobble', 'animate__slideInUp')">
+                        <div class="card-body">
+                            <i class="fab fa-twitter fa-2x text-primary mb-3" style="color: #1DA1F2;"></i>
+                            <h5>Twitter</h5>
+                            <p>@Rajender Mohan Verma</p>
+                            <a href="https://x.com/Rajendermv7800" class="btn btn-sm btn-outline-primary" style="border-color: #1DA1F2; color: #1DA1F2;">
+                                <i class="fab fa-twitter me-1"></i> Tweet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Telegram -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm animate__animated animate__zoomIn"
+                         onmouseenter="this.classList.replace('animate__zoomIn', 'animate__swing')"
+                         onmouseleave="this.classList.replace('animate__swing', 'animate__zoomIn')">
+                        <div class="card-body">
+                            <i class="fab fa-telegram fa-2x text-primary mb-3"></i>
+                            <h5>Telegram</h5>
+                            <p>@rajendermohanVerma</p>
+                            <a href="https://t.me/rajendermohan734" class="btn btn-sm btn-outline-primary">
+                                <i class="fab fa-telegram me-1"></i> Message
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Section -->
+    <div id="help" class="row py-5 bg-light rounded-3 my-4 fade-in" style="animation-delay: 1s">
+        <div class="col-md-10 mx-auto text-center">
+            <h2><i class="fas fa-question-circle text-info me-2"></i>Need Help?</h2>
+            <p class="lead mb-4">Get instant support through these options:</p>
+            
+            <div class="row g-4">
+                <!-- AI Assistant Card -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm animate__animated animate__fadeInLeft help-card"
+                         onmouseenter="this.classList.replace('animate__fadeInLeft', 'animate__heartBeat')"
+                         onmouseleave="this.classList.replace('animate__heartBeat', 'animate__fadeInLeft')">
+                        <div class="card-body">
+                            <i class="fas fa-robot fa-3x text-info mb-3 pulse-icon"></i>
+                            <h5>AI Assistant</h5>
+                            <p>Get instant answers to Python questions</p>
+                            <button class="btn btn-info glow-on-hover w-100" id="start-ai-chat">
+                                <i class="fas fa-comment-dots me-2"></i> Chat with AI
+                            </button>
+                            <small class="text-muted mt-2 d-block">Powered by Blackbox AI</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Support Cards -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm animate__animated animate__fadeIn help-card"
+                         onmouseenter="this.classList.replace('animate__fadeIn', 'animate__wobble')"
+                         onmouseleave="this.classList.replace('animate__wobble', 'animate__fadeIn')">
+                        <div class="card-body">
+                            <i class="fas fa-headset fa-3x text-primary mb-3 pulse-icon"></i>
+                            <h5>Live Chat</h5>
+                            <p>Instant messaging with our team</p>
+                            <a href="https://t.me/rajendermohan734" class="btn btn-primary w-100 mb-2">
+                                <i class="fab fa-telegram me-2"></i> Telegram
+                            </a>
+                            <small class="text-muted d-block">Available 9AM-5PM</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email Support Card -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm animate__animated animate__zoomIn help-card"
+                         onmouseenter="this.classList.replace('animate__zoomIn', 'animate__rubberBand')"
+                         onmouseleave="this.classList.replace('animate__rubberBand', 'animate__zoomIn')">
+                        <div class="card-body">
+                            <i class="fas fa-envelope fa-3x text-danger mb-3 pulse-icon"></i>
+                            <h5>Email Support</h5>
+                            <p>Get detailed help via email</p>
+                            <a href="mailto:rajendramohan7800@gmail.com" class="btn btn-danger w-100">
+                                <i class="fas fa-envelope me-2"></i> Email Us
+                            </a>
+                            <small class="text-muted mt-2 d-block">24/7 support</small>
+                        </div>
+                    </div>
+                </div>
+                
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-question-circle me-2"></i>Help Center</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <h6>How to take the quiz:</h6>
+                <ol>
+                    <li>Click "Start Quiz"</li>
+                    <li>Read each question carefully</li>
+                    <li>Select your answer</li>
+                    <li>Submit before time runs out</li>
+                </ol>
+                <hr>
+                <p>For additional help, please contact us.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

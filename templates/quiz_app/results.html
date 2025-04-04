@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="quiz-container">
+    <h2 class="mb-4">Your Results</h2>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="card-title">Detailed Results</h4>
+            <div class="progress mb-4" style="height: 30px;">
+                <div class="progress-bar bg-success" role="progressbar" style="width: {{ score_percent }}%">
+                    {{ correct }} Correct
+                </div>
+                <div class="progress-bar bg-danger" role="progressbar" style="width: {{ 100|subtract:score_percent }}%">
+                    {{ total|subtract:correct }} Incorrect
+                </div>
+            </div>
+            
+            <div class="results-list">
+                {% for result in results %}
+                <div class="result-item mb-3 p-3 {% if result.is_correct %}bg-success bg-opacity-10{% else %}bg-danger bg-opacity-10{% endif %}">
+                    <div class="d-flex justify-content-between">
+                        <strong>Q{{ forloop.counter }}:</strong>
+                        <span>
+                            {% if result.is_correct %}
+                                <i class="fas fa-check text-success"></i> Correct
+                            {% else %}
+                                <i class="fas fa-times text-danger"></i> Incorrect
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="mt-2">
+                        <small>{{ result.question_text }}</small>
+                    </div>
+                    {% if not result.is_correct %}
+                    <div class="mt-2 text-muted">
+                        <small>Correct answer: {{ result.correct_answer }}</small>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center mt-4">
+                <p class="lead">
+                    <i class="fas fa-star text-warning"></i>
+                    Final Score: <strong>{{ correct }}/{{ total }}</strong> ({{ score_percent }}%)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-grid gap-2">
+        <a href="{% url 'quiz:start_quiz' %}" class="btn btn-primary btn-lg">
+            <i class="fas fa-redo me-2"></i> Try Again
+        </a>
+        <a href="{% url 'quiz:home' %}" class="btn btn-outline-secondary">
+            <i class="fas fa-home me-2"></i> Return Home
+        </a>
+    </div>
+</div>
+{% endblock %}
